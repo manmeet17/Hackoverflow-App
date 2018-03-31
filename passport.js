@@ -24,9 +24,9 @@ module.exports = function(app){
             if(err){
                 console.log(err);
             }
-            if(user){
-                console.log("User already registered");
-                return done(null, false, {message: "User already registered"});
+            if(!user){
+                console.log("User not registered");
+                return done(null, false, {message: "User not registered"});
             }
             if(!user.checkPassword(password))
                 return done(null,false,{message: "Incorrect Password"});

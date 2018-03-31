@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MediConnect</title>
+</head>
+<body>
+        <h1>Register for MediConnect</h1>
+        <form method="POST" action="/hospital/register">
+            Name of the Hospital: <input type="text" name="name"> <br>
+            Email Id: <input type="email" name="email"><br>
+            Password: <input type="password" name="password"><br>
+            Location: <input type="text" name="location"><br>
+            <input type="Submit" name="submit">
+        </form>
+        
+        <br>
+        <hr>
+        <h1>Login</h1>
+        <form method="POST" action="/hospital/login">
+            Email id: <input type="email" name="email"><br>
+            Password: <input type="password" name="password">
+            <input type="Submit" name="submit">
+            
+        </form>
+            
+</body>
+</html>

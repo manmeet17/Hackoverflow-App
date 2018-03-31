@@ -9,7 +9,7 @@ module.exports=function(app,passport){
                 user: req.user
             });
         }
-        res.render(index);
+        res.sendFile('/assets/home.html',{"root": __dirname});
 
         // res.status(404).json({
         //     status: 0,
@@ -30,12 +30,11 @@ module.exports=function(app,passport){
                console.log("User is already signed up");
            }
            else{
-               var hospital = new Hospital({
-                   name: req.body,
-                   email: req.email,
-                   location: req.location,
-                   password: this.hashPassword(req.password) 
-               });
+               var hospital = new Hospital();
+                hospital.name=req.body.name;
+                hospital.email=req.body.email;
+                hospital.location= req.body.location;
+                hospital.password= hospital.hashPassword(req.body.password); 
                hospital.save(function(err){
                    if(err) console.log(err)
                });
