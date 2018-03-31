@@ -3,24 +3,31 @@ var Hospital = require('../models/hospital');
 module.exports=function(app,passport){
 
     app.get('/',(req,res) =>{
+        res.redirect('/hospital/login');
+    });
+
+    app.get('/user',(req,res) =>{
         if(req.user){
             res.status(200).json({
                 status: 1,
                 user: req.user
             });
         }
-        res.sendFile('/assets/home.html',{"root": __dirname});
-
-        // res.status(404).json({
-        //     status: 0,
-        //     user: null,
-        //     message: "User not logged in"
-        // });
+        else{
+            res.status(404).json({
+                status: 0,
+                user: null,
+                message: "User not logged in"
+            });
+        }
+        
     });
-
+    app.get('/hospital/login',(req,res)=>{
+        res.render('index.ejs');
+    });
     app.post('/hospital/login', passport.authenticate('login',{
-        successRedirect: '/',
-        failureRedirect: '/auth/login',
+        successRedirect: '/user',
+        failureRedirect: '/hospital/login',
     }));
 
     app.post('/hospital/register',(req,res) =>{
