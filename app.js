@@ -14,7 +14,7 @@ mongoose.Promise=global.Promise;
 
 var app = express();
 
-mongoose.connect(config.url,{uri_decode_auth: true} function(err){
+mongoose.connect(config.url,{uri_decode_auth: true} ,function(err){
   if(err) console.log(err);
 });
 
